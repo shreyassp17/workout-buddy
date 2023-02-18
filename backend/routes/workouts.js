@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 
 const {createWorkout, getWorkouts, getWorkout, deleteWorkout, updateWorkout} = require('../controllers/workoutController')
+const requireAuth = require('../middleware/requireAuth')
+
+//fires this middleware function before all the below routes
+router.use(requireAuth)
 
 //GET all the workouts
 router.get('/', getWorkouts)
